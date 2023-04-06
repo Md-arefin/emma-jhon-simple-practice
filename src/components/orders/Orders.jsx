@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { removeFromDb } from '../../utilities/fakedb';
 import Cart from '../cart/Cart';
 import ReviewItem from '../reviewItem/ReviewItem';
 import './Orders.css';
 
 const Orders = () => {
-    const cart = useLoaderData();
+    const savedCart = useLoaderData();
     // console.log(products);
+
+    const [cart, setCart] = useState(savedCart);
+
+    const handleRemoveFromCart = (id) => {
+        // console.log(id);
+        const remaining = cart.filter(product => product.id !== id);
+        setCart(remaining);
+        removeFromDb(id);
+    }
 
     return (
         <div className='shop-container'>
@@ -15,6 +25,7 @@ const Orders = () => {
                     cart.map(product => <ReviewItem
                         key={product.id}
                         product={product}
+                        handleRemoveFromCart ={handleRemoveFromCart}
                     ></ReviewItem>
                     )}
             </div>
