@@ -1,0 +1,21 @@
+ .header{
+   background-color: #1C2B35;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1920px;
+    padding-left: 100px;
+    padding-right: 100px;
+ }
+
+ nav a{
+    text-decoration: none;
+    margin-left: 30px;
+    color: white;
+    font-size: 20px;
+ }
+
+ nav a:hover{
+    color: orange;
+ }
