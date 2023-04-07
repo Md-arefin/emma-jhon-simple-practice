@@ -1,5 +1,7 @@
+import { faCreditCardAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
 import Cart from '../cart/Cart';
 import ReviewItem from '../reviewItem/ReviewItem';
@@ -39,7 +41,13 @@ const Orders = () => {
                 <Cart 
                 cart={cart}
                 handleClearCart={handleClearCart}
-                ></Cart>
+                >
+                    <Link to='/checkOut'>
+                    <button className='btn-proceed'>Proceed checkOut
+                    <FontAwesomeIcon className='arrow-icon' icon={faCreditCardAlt} />
+                    </button>
+                    </Link>
+                </Cart>
             </div>
         </div>
     );

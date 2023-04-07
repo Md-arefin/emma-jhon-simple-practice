@@ -12,6 +12,7 @@ import Orders from './components/orders/Orders';
 import Inventory from './components/Mange-Inventory/Inventory';
 import Login from './components/Login/Login';
 import cartProductsLoader from './loaders/cartProductsLoader';
+import CheckOut from './components/Checkout/CheckOut';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
         element:<Shop></Shop>
       },
       {
-        path:"order",
+        path:"orders",
         element:<Orders></Orders>,
         // loader: () => fetch('products.json'),
         loader: cartProductsLoader,
@@ -39,7 +40,11 @@ const router = createBrowserRouter([
       {
         path:"login",
         element:<Login></Login>
-      }
+      },
+      {
+        path:"checkOut",
+        element:<CheckOut></CheckOut>
+      },
     ]
   },
 ]);

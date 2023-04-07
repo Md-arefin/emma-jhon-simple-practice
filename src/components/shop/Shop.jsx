@@ -1,4 +1,7 @@
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { addToDb, deleteShoppingCart, getShoppingCart } from '../../utilities/fakedb';
 import Cart from '../cart/Cart';
 import Product from '../product/Product';
@@ -22,7 +25,7 @@ const Shop = () => {
             // step 2 get the product by using id
             const addedProduct = products.find(product => product.id === id)
             // console.log(addedProduct);
-            if(addedProduct){
+            if (addedProduct) {
                 // step 3 get the quantity of the product 
                 const quantity = storedCart[id];
                 addedProduct.quantity = quantity;
@@ -57,7 +60,7 @@ const Shop = () => {
     }
 
     const handleClearCart = () => {
-        setCart([]) ;
+        setCart([]);
         deleteShoppingCart();
     }
 
@@ -73,10 +76,16 @@ const Shop = () => {
                 }
             </div>
             <div className="cart-container">
-                <Cart 
-                cart={cart}
-                handleClearCart={handleClearCart}
-                ></Cart>
+                <Cart
+                    cart={cart}
+                    handleClearCart={handleClearCart}
+                >
+                    <Link to="/orders">
+                        <button className='btn-proceed'>Review Order 
+                        <FontAwesomeIcon className='arrow-icon' icon={faArrowRight}
+                        /></button>
+                    </Link>
+                </Cart>
             </div>
 
         </div>
